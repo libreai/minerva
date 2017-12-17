@@ -1,4 +1,4 @@
-## Global Risk SQL queries for GDELT in Google BigQuery
+## Global Risk SQL queries for GDELT dataset hosted in Google BigQuery
 
 For each Global Risk in consideration, we provide a SQL query against the
 GDELT dataset hosted in Google BigQuery as `gdelt-bq.gdeltv2.gkg`.

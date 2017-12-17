@@ -1,6 +1,5 @@
 
-### Risk_001_asset_bubbles_in_a_major_economy
-
+#### Risk_001_asset_bubbles_in_a_major_economy
 ```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
@@ -14,8 +13,7 @@ WHERE
   V2Themes like '%WB_1104_MACROECONOMIC_VULNERABILITY_AND_DEBT%'
 ```
 
-### Risk_002_deflation_in_a_major_economy
-
+#### Risk_002_deflation_in_a_major_economy
 ```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
@@ -26,8 +24,7 @@ WHERE
   V2Themes like '%WB_1104_MACROECONOMIC_VULNERABILITY_AND_DEBT%'
 ```
 
-### Risk_003_failure_of_a_major_financial_mechanism_or_institution
-
+#### Risk_003_failure_of_a_major_financial_mechanism_or_institution
 ```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
@@ -39,8 +36,8 @@ WHERE
   V2Themes like '%WB_1142_FINANCIAL_SECTOR_INSTABILITY"%'
 ```
 
-### Risk_004_failure_shortfall_of_critical_infrastructure
-
+#### Risk_004_failure_shortfall_of_critical_infrastructure
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -54,20 +51,20 @@ V2Themes like '%MANMADE_DISASTER_POWER_OUTAGES%' or
 V2Themes like '%PHONE_OUTAGE%' or
 V2Themes like '%WB_____WATER_SUPPLY%' or
 V2Themes like '%WB______WATER_ALLOCATION_AND_WATER_SUPPLY%'
+```
 
-Risk_005_fiscal_crises_in_key_economies
-
+#### Risk_005_fiscal_crises_in_key_economies
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
   `gdelt-bq.gdeltv2.gkg`
 WHERE
   V2Themes like '%WB_1104_MACROECONOMIC_VULNERABILITY_AND_DEBT%'
+```
 
-
-
-Risk_006_high_structural_unemployment_or_underemployment
-
+#### Risk_006_high_structural_unemployment_or_underemployment
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -114,9 +111,10 @@ WHERE
   V2Themes like '%WB_1659_JOB_ROTATION%' or
   V2Themes like '%TAX_FNCACT_JOBHOLDERS%' or
   V2Themes like '%WB______JOBS%'
+```
 
-Risk_007_illicit_trade
-
+#### Risk_007_illicit_trade
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -141,12 +139,10 @@ V2Themes like '%WB_2461_TRAFFICKING_NATURAL_RESOURCES%' or
 V2Themes like '%WB_2073_ILLICIT_FINANCIAL_FLOWS%' or
 V2Themes like '%WB_2459_ILLICIT_FINANCIAL_FLOWS%' or
 V2Themes like '%WB______ILLICIT_FINANCIAL_FLOWS%'
+```
 
-
-
-
-Risk_008_severe_energy_price_shock
-
+#### Risk_008_severe_energy_price_shock
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -160,9 +156,10 @@ WHERE
   V2Themes like '%WB_____ENERGY_AND_EXTRACTIVES%' or
   V2Themes like '%WB_534_EFFICIENT_ENERGY_SUPPLY%' or
   V2Themes like '%ECON_ELECTRICALPRICE%'
+```
 
-Risk_009_unmanageable_inflation
-
+#### Risk_009_unmanageable_inflation
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -187,18 +184,20 @@ WHERE
   V2Themes like '%WB______PRICE_SUBSIDIES%' or
   V2Themes like '%WB_1164_COMMODITY_PRICES_SHOCKS%' or
   V2Themes like '%WB______PRICE_CONTROLS%'
+```
 
-Risk_010_extreme_weather_events
-
+#### Risk_010_extreme_weather_events
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
   `gdelt-bq.gdeltv2.gkg`
 WHERE
   V2Themes like '%NATURAL_DISASTER_%'
+```
 
-Risk_011_failure_of_climate_change_mitigation_and_adaptation
-
+#### Risk_011_failure_of_climate_change_mitigation_and_adaptation
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -232,9 +231,10 @@ WHERE
   V2Themes like '%WB______BUSINESS_ENVIRONMENT%' or
   V2Themes like '%WB_____ENVIRONMENT_AND_NATURAL_RESOURCES%' or
   V2Themes like '%WB_2205_ENVIRONMENTAL_AND_SOCIAL_CATEGORIZATION%'
+```
 
-Risk_012_major_biodiversity_loss_and_ecosystem_collapse
-
+#### Risk_012_major_biodiversity_loss_and_ecosystem_collapse
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -245,9 +245,10 @@ WHERE
   V2Themes like '%ENV_SPECIESEXTINCT%' or
   V2Themes like '%WB_435_AGRICULTURE_AND_FOOD_SECURITY%' or
   V2Themes like '%WB______BIODIVERSITY%'
+```
 
-Risk_013_man_made_environmental_damage_and_disasters
-
+#### Risk_013_man_made_environmental_damage_and_disasters
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -257,9 +258,10 @@ WHERE
   V2Themes like '%MANMADE_DISASTER_FIRE_TRUCKS%' or
   V2Themes like '%MANMADE_DISASTER_FIRE_TRUCK%' or
   V2Themes like '%MANMADE_*%'
+```
 
-Risk_014_failure_of_national_governance
-
+#### Risk_014_failure_of_national_governance
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -296,9 +298,10 @@ WHERE
   V2Themes like '%TAX_FNCACT_COUP_PLOTTERS%' or
   V2Themes like '%TAX_FNCACT_COUP_PLOTTER%' or
   V2Themes like '%WB_737_LOCAL_GOVERNANCE%'
+```
 
-Risk_015_failure_of_regional_or_global_governance
-
+#### Risk_015_failure_of_regional_or_global_governance
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -309,10 +312,10 @@ WHERE
   V2Themes like '%WB_1385_GOVERNANCE_AND_STEWARDSHIP%' or
   V2Themes like '%WB_1922_GOVERNANCE_STRUCTURES%' or
   V2Themes like '%MANMADE_DISASTER_ENVIRONMENTAL_DISASTER%'
+```
 
-
-Risk_016_interstate_conflict_with_regional_consequences
-
+#### Risk_016_interstate_conflict_with_regional_consequences
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -325,9 +328,10 @@ WHERE
   V2Themes like '%WB_2969_SOCIAL_CONFLICT%' or
   V2Themes like '%WB______FRAGILITY_CONFLICT_AND_VIOLENCE%' or
   V2Themes like '%WB______CONFLICT_AND_VIOLENCE"%'
+```
 
-Risk_017_large_scale_terrorist_attacks
-
+#### Risk_017_large_scale_terrorist_attacks
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -340,9 +344,10 @@ WHERE
   V2Themes like '%TAX_TERROR_GROUP_MAKHACHKALA_TERRORISTS%' or
   V2Themes like '%TAX_TERROR_GROUP_ISLAMIC_STATE%' or
   V2Themes like '%TAX_TERROR_GROUP_ISLAMIC_STATE_OF_IRAQ"%'
+```
 
-Risk_018_state_collapse_or_crisis
-
+#### Risk_018_state_collapse_or_crisis
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -350,18 +355,20 @@ FROM
 WHERE
   V2Themes like '%"GOV_STATE_FAILURE%' or
   V2Themes like '%WB_2969_SOCIAL_CONFLICT%'
+```
 
-Risk_019_weapons_of_mass_destruction
-
+#### Risk_019_weapons_of_mass_destruction
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
   `gdelt-bq.gdeltv2.gkg`
 WHERE
   V2Themes like '%WB______WEAPONS_OF_MASS_DESTRUCTION%'
+```
 
-Risk_020_failure_of_urban_planning
-
+#### Risk_020_failure_of_urban_planning
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -379,18 +386,20 @@ WHERE
   V2Themes like '%WB_785_URBAN_ROADS%' or
   V2Themes like '%WB_710_URBAN_POVERTY%' or
   V2Themes like '%WB_1781_URBAN_ECOSYSTEMS%'
+```
 
-Risk_021_food_crises
-
+#### Risk_021_food_crises
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
   `gdelt-bq.gdeltv2.gkg`
 WHERE
   V2Themes like '%WB_435_AGRICULTURE_AND_FOOD_SECURITY%'
+```
 
-Risk_022_large_scale_involuntary_migration
-
+#### Risk_022_large_scale_involuntary_migration
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -435,9 +444,10 @@ WHERE
   V2Themes like '%WB_1333_HEALTH_WORKER_MIGRATION%' or
   V2Themes like '%WB______IMMIGRATION%' or
   V2Themes like '%WB______EMIGRATION%'
+```
 
-Risk_023_profound_social_instability
-
+#### Risk_023_profound_social_instability
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -447,9 +457,10 @@ WHERE
   V2Themes like '%WB_2462_POLITICAL_VIOLENCE_AND_WAR%' or
   V2Themes like '%POLITICAL_TURMOIL%' or
   V2Themes like '%WB_739_POLITICAL_VIOLENCE_AND_CIVIL_WAR%'
+```
 
-Risk_024_rapid_and_massive_spread_of_infectious_diseases
-
+#### Risk_024_rapid_and_massive_spread_of_infectious_diseases
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -513,9 +524,10 @@ WHERE
   V2Themes like '%TAX_DISEASE_DENGUE_FEVER%' or
   V2Themes like '%TAX_DISEASE_CHIKUNGUNYA%' or
   V2Themes like '%TAX_DISEASE_LYME_DISEASE%'
+```
 
-Risk_025_water_crises
-
+#### Risk_025_water_crises
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -550,9 +562,10 @@ WHERE
   V2Themes like '%WB_1731_NON_REVENUE_WATER%' or
   V2Themes like '%WB_2007_WATER_SAFETY_PLANS%' or
   V2Themes like '%TAX_DISEASE_WATER_INTOXICATION%'
+```
 
-Risk_026_adverse_consequences_of_technological_advances
-
+#### Risk_026_adverse_consequences_of_technological_advances
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -565,9 +578,10 @@ WHERE
   V2Themes like '%WB_2377_TECHNOLOGY_ARCHITECTURE%' or
   V2Themes like '%WB_378_INNOVATION_AND_TECHNOLOGY_POLICY%' or
   V2Themes like '%WB_1952_MITIGATION_TECHNOLOGY%'
+```
 
-Risk_027_breakdown_of_critical_information_infrastructure_and_networks_and_cybrattacks
-
+#### Risk_027_breakdown_of_critical_information_infrastructure_and_networks_and_cybrattacks
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -575,9 +589,10 @@ FROM
 WHERE
   V2Themes like '%CYBER_ATTACK%' or
   V2Themes like '%WB_2457_CYBER_CRIME%'
+```
 
-Risk_028_massive_incident_of_data_fraud_and_theft
-
+#### Risk_028_massive_incident_of_data_fraud_and_theft
+```
 SELECT
   GKGRECORDID, DATE, Themes, V2Themes, V2Organizations , V2Persons, AllNames
 FROM
@@ -590,3 +605,4 @@ WHERE
   V2Themes like '%TAX_TERROR_GROUP_REDHACK%' or
   V2Themes like '%TAX_FNCACT_BUSHWHACKER%' or
   V2Themes like '%TAX_FNCACT_BUSHWHACKERS%'
+```

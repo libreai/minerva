@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<h1>Learning to Predict the Global Risks Interconnections from the Web</h1>
+<h2>The Global Risks Interconnections Map 2017</h2>
+<h3>Project codename: Minerva</h3>
+<h3>ID: r3-ywoLejjZpgAv</h3>
+<h3></h3>
+<p><b>Tip:</b> try to <b>drag</b> the nodes if they overlap or to <b>double-click</b>
+  on a node to highlight its neighbors and double-click again to unselect them.</p>
+
+  <style>
+       .link {
+          stroke: #999;
+          stroke-opacity: .6;
+        }
+
+      .node {
+          stroke: #fff;
+          stroke-width: 1.5px;
+      }
+
+      .node text {
+          pointer-events: none;
+          font: 14px sans-serif;
+          color: #000000;
+          stroke-width: 0px;
+        }
+  </style>
+  
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.13.0/d3-legend.min.js"></script>
+
+<script id="mis" type="application/json">
+{
+  "groups": [
+    {"id": "0", "name": "Economic Risks"},
+    {"id": "1", "name": "Environmental Risks"},
+    {"id": "2", "name": "Geopolitical Risks"},
+    {"id": "3", "name": "Societal Risks"},
+    {"id": "4", "name": "Technological Risks"}
+  ],
+  "nodes":
+  [
+    {"group": 0, "name": "Asset bubbles in a major economy"},
+    {"group": 0, "name": "Deflation in a major economy"},
+    {"group": 0, "name": "Failure of a major financial mechanism or institution"},
+    {"group": 0, "name": "Failure/shortfall of critical infrastructure"},
+    {"group": 0, "name": "Fiscal crises in key economies"},
+    {"group": 0, "name": "High structural unemployment or underemployment"},
+    {"group": 0, "name": "Illicit trade"},
+    {"group": 0, "name": "Severe energy price shock"},
+    {"group": 0, "name": "Unmanageable inflation"},
+    {"group": 1, "name": "Extreme weather events"},
+    {"group": 1, "name": "Failure of climate-change mitigation and adaptation"},
+    {"group": 1, "name": "Major biodiversity loss and ecosystem collapse"},
+    {"group": 1, "name": "Man made environmental damage and disasters"},
+    {"group": 2, "name": "Failure of national governance"},
+    {"group": 2, "name": "Failure of regional or global governance"},
+    {"group": 2, "name": "Interstate conflict with regional consequences"},
+    {"group": 2, "name": "Large scale terrorist attacks"},
+    {"group": 2, "name": "State collapse or crisis"},
+    {"group": 2, "name": "Weapons of mass destruction"},
+    {"group": 3, "name": "Failure of urban planning"},
+    {"group": 3, "name": "Food crises"},
+    {"group": 3, "name": "Large scale involuntary migration"},
+    {"group": 3, "name": "Profound social instability"},
+    {"group": 3, "name": "Rapid and massive spread of infectious diseases"},
+    {"group": 3, "name": "Water crises"},
+    {"group": 4, "name": "Adverse consequences of technological advances"},
+    {"group": 4, "name": "Breakdown of critical information infrastructure and networks and cyberattacks"},
+    {"group": 4, "name": "Massive incident of data fraud and theft"}
+  ],
+"links": [
+  {"source": 11, "target": 20,"value": 97},
+  {"source": 4, "target": 11, "value": 24},
+  {"source": 4, "target": 25, "value": 12},
+  {"source": 0, "target": 9, "value": 21},
+  {"source": 3, "target": 26, "value": 11},
+  {"source": 3, "target": 27, "value": 10},
+  {"source":7, "target": 9, "value": 33},
+  {"source": 14, "target": 22, "value": 32},
+  {"source": 8, "target": 10, "value": 35},
+  {"source": 4, "target": 20, "value": 25},
+  {"source": 6, "target": 23, "value": 35},
+  {"source": 18, "target": 27,"value": 7},
+  {"source": 16, "target": 25, "value": 10},
+  {"source": 17, "target": 27, "value": 1},
+  {"source": 7, "target": 11, "value": 32},
+  {"source": 2, "target": 12, "value": 5},
+  {"source": 5, "target": 13, "value": 37},
+  {"source": 9, "target": 24, "value": 44},
+  {"source": 19, "target": 25, "value": 20},
+  {"source": 19, "target": 27, "value": 10},
+  {"source": 1, "target": 19, "value": 18},
+  {"source": 10, "target": 20, "value": 38},
+  {"source": 11, "target": 24, "value": 36},
+  {"source": 6, "target": 14, "value": 38},
+  {"source": 14, "target": 23, "value": 37},
+  {"source": 13, "target": 23, "value": 34},
+  {"source": 16, "target": 22, "value": 12},
+  {"source": 7, "target": 10, "value": 36},
+  {"source": 4, "target": 26, "value": 12},
+  {"source": 4, "target": 19, "value": 18},
+  {"source": 3, "target": 25, "value": 14},
+  {"source": 12, "target": 17, "value": 2},
+  {"source": 9, "target": 20, "value": 35},
+  {"source": 16, "target": 26, "value": 14},
+  {"source": 15, "target": 22, "value": 30},
+  {"source": 19, "target": 26, "value": 17},
+  {"source": 8, "target": 24, "value": 36},
+  {"source": 12, "target": 18, "value": 6},
+  {"source": 0, "target": 20, "value": 26},
+  {"source": 10, "target": 24, "value": 43},
+  {"source": 8, "target": 21, "value": 34},
+  {"source": 6, "target": 15, "value": 35},
+  {"source": 15, "target": 21, "value": 39},
+  {"source": 6, "target": 13, "value": 37},
+  {"source": 16, "target": 27, "value": 9},
+  {"source": 4, "target": 9, "value": 20},
+  {"source": 2, "target": 17, "value": 7},
+  {"source": 3, "target": 19, "value": 15},
+  {"source": 3, "target": 12, "value": 7},
+  {"source": 6, "target": 21, "value": 39},
+  {"source": 13, "target": 22, "value": 46},
+  {"source": 13, "target": 21, "value": 45},
+  {"source": 5, "target": 15, "value": 38},
+  {"source": 1, "target": 11, "value": 24},
+  {"source": 1, "target": 9, "value": 20},
+  {"source": 2, "target": 18, "value": 7},
+  {"source": 7, "target": 24, "value": 37},
+  {"source": 0, "target": 11, "value": 26},
+  {"source": 5, "target": 21, "value": 42},
+  {"source": 14, "target": 21, "value": 42},
+  {"source": 12, "target": 27, "value": 5},
+  {"source": 1, "target": 20, "value": 25}
+]
+}
+</script>
+
+<script>
+//Constants for the SVG
+var width = 1024,
+  height = 800;
+
+//Set up the colour scale
+var color = d3.scale.category20();
+
+//Set up the force layout
+var force = d3.layout.force()
+  .size([width, height])
+  .charge(-500)
+  .linkDistance(150);
+
+//Append a SVG to the body of the html page. Assign this SVG as an object to svg
+var svg = d3.select("body").append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+//Read the data from the mis element
+var mis = document.getElementById('mis').innerHTML;
+graph = JSON.parse(mis);
+
+//Creates the graph data structure out of the json data
+force.nodes(graph.nodes)
+  .links(graph.links)
+  .start();
+
+//Create all the line svgs but without locations yet
+var link = svg.selectAll(".link")
+  .data(graph.links)
+  .enter().append("line")
+  .attr("class", "link")
+  .style("stroke-width", function(d) {
+    return Math.sqrt(d.value);
+  });
+
+//Do the same with the circles for the nodes - no
+var node = svg.selectAll(".node")
+  .data(graph.nodes)
+  .enter().append("g")
+  .attr("class", "node")
+  .call(force.drag)
+  .on('dblclick', connectedNodes);
+
+node.append("circle")
+  .attr("r", 8)
+  .style("fill", function(d) {
+    return color(d.group);
+  })
+
+node.append("text")
+  .attr("dx", 10)
+  .attr("dy", ".35em")
+  .text(function(d) {
+    return d.name
+  });
+
+//Now we are giving the SVGs co-ordinates - the force layout is generating the co-ordinates which this code is using to update the attributes of the SVG elements
+force.on("tick", function() {
+  link.attr("x1", function(d) {
+      return d.source.x;
+    })
+    .attr("y1", function(d) {
+      return d.source.y;
+    })
+    .attr("x2", function(d) {
+      return d.target.x;
+    })
+    .attr("y2", function(d) {
+      return d.target.y;
+    });
+
+  d3.selectAll("circle").attr("cx", function(d) {
+      return d.x;
+    })
+    .attr("cy", function(d) {
+      return d.y;
+    });
+
+  d3.selectAll("text").attr("x", function(d) {
+      return d.x;
+    })
+    .attr("y", function(d) {
+      return d.y;
+    });
+});
+
+//select neighbors
+//Toggle stores whether the highlighting is on
+var toggle = 0;
+
+//Create an array logging what is connected to what
+var linkedByIndex = {};
+for (i = 0; i < graph.nodes.length; i++) {
+    linkedByIndex[i + "," + i] = 1;
+};
+graph.links.forEach(function (d) {
+    linkedByIndex[d.source.index + "," + d.target.index] = 1;
+});
+
+//This function looks up whether a pair are neighbours
+function neighboring(a, b) {
+    return linkedByIndex[a.index + "," + b.index];
+}
+
+function connectedNodes() {
+
+    if (toggle == 0) {
+        //Reduce the opacity of all but the neighbouring nodes
+        d = d3.select(this).node().__data__;
+        node.style("opacity", function (o) {
+            return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+        });
+
+        link.style("opacity", function (o) {
+            return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+        });
+
+        //Reduce the op
+
+        toggle = 1;
+    } else {
+        //Put them back to opacity=1
+        node.style("opacity", 1);
+        link.style("opacity", 1);
+        toggle = 0;
+    }
+
+}
+
+//The legend
+var ordinal = d3.scale.ordinal()
+  .domain(graph.groups.map(group => group.name))
+  .range(graph.groups.map(group => color(group.id)));
+
+var svg = d3.select("svg");
+
+svg.append("g")
+  .attr("class", "legendOrdinal")
+  .attr("transform", "translate(20,20)");
+
+var legendOrdinal = d3.legend.color()
+  //d3 symbol creates a path-string, for example
+  //"M0,-8.059274488676564L9.306048591020996,
+  //8.059274488676564 -9.306048591020996,8.059274488676564Z"
+  .shape("path", d3.svg.symbol().type("circle").size(150)())
+  .shapePadding(10)
+  .scale(ordinal);
+
+svg.select(".legendOrdinal")
+  .call(legendOrdinal);
+</script>

@@ -1,0 +1,29 @@
+Id;Label;Group
+0;"Asset bubbles in a major economy";0
+1;"Deflation in a major economy";0
+2;"Failure of a major financial mechanism or institution";0
+3;"Failure/shortfall of critical infrastructure";0
+4;"Fiscal crises in key economies";0
+5;"High structural unemployment or underemployment";0
+6;"Illicit trade";0
+7;"Severe energy price shock";0
+8;"Unmanageable inflation";0
+9;"Extreme weather events";1
+10;"Failure of climate-change mitigation and adaptation";1
+11;"Major biodiversity loss and ecosystem collapse";1
+12;"Man made environmental damage and disasters";1
+13;"Failure of national governance";2
+14;"Failure of regional or global governance";2
+15;"Interstate conflict with regional consequences";2
+16;"Large scale terrorist attacks";2
+17;"State collapse or crisis";2
+18;"Weapons of mass destruction";2
+19;"Failure of urban planning";3
+20;"Food crises";3
+21;"Large scale involuntary migration";3
+22;"Profound social instability";3
+23;"Rapid and massive spread of infectious diseases";3
+24;"Water crises";3
+25;"Adverse consequences of technological advances";4
+26;"Breakdown of critical information infrastructure and networks and cyberattacks";4
+27;"Massive incident of data fraud and theft";4

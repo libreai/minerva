@@ -27,7 +27,7 @@
           stroke-width: 0px;
         }
   </style>
-  
+
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.13.0/d3-legend.min.js"></script>
 
@@ -149,8 +149,10 @@ var color = d3.scale.category20();
 //Set up the force layout
 var force = d3.layout.force()
   .size([width, height])
-  .charge(-500)
-  .linkDistance(150);
+  .charge(-1024)
+  .linkDistance(100)
+  .friction(0.5);
+
 
 //Append a SVG to the body of the html page. Assign this SVG as an object to svg
 var svg = d3.select("body").append("svg")
@@ -181,7 +183,9 @@ var node = svg.selectAll(".node")
   .enter().append("g")
   .attr("class", "node")
   .call(force.drag)
-  .on('dblclick', connectedNodes);
+  .on('dblclick', connectedNodes)
+  .on('mouseover', neighborsOn)
+  .on('mouseout', neighborsOff);
 
 node.append("circle")
   .attr("r", 8)
@@ -244,26 +248,31 @@ function neighboring(a, b) {
     return linkedByIndex[a.index + "," + b.index];
 }
 
+function neighborsOn(d) {
+		node.style("opacity", function (o) {
+        return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+    });
+
+    link.style("opacity", function (o) {
+        return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+    });
+}
+
+function neighborsOff(d) {
+		 node.style("opacity", 1);
+     link.style("opacity", 1);
+}
+
 function connectedNodes() {
+		d = d3.select(this).node().__data__;
 
     if (toggle == 0) {
         //Reduce the opacity of all but the neighbouring nodes
-        d = d3.select(this).node().__data__;
-        node.style("opacity", function (o) {
-            return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
-        });
-
-        link.style("opacity", function (o) {
-            return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
-        });
-
-        //Reduce the op
-
+        neighborsOn(d);
         toggle = 1;
     } else {
         //Put them back to opacity=1
-        node.style("opacity", 1);
-        link.style("opacity", 1);
+       	neighborsOff(d);
         toggle = 0;
     }
 

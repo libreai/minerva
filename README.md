@@ -5,10 +5,5 @@
 
 ---
 
-### Milestone 1: Initial version of the prototype to visualize the interconnected risks graph
+### Milestone 2: Launch a minimum viable product (MVP) to satisfy early adopters and User Validation
 
-#### Visualization:
-* https://libreai.github.io/minerva/
-
-#### Notebooks:
-* https://github.com/libreai/minerva/tree/master/src/notebooks

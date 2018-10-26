@@ -8,7 +8,7 @@
 ### Milestone 1: Initial version of the prototype to visualize the interconnected risks graph
 
 #### Visualization:
-* https://libre-ai.github.io/minerva/
+* https://librear.github.io/minerva/
 
 #### Notebooks:
-* https://github.com/libre-ai/minerva/tree/master/src/notebooks
+* https://github.com/libreai/minerva/tree/master/src/notebooks

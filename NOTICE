@@ -5,6 +5,8 @@ This product includes software developed at Libre AI (https://www.libreai.com/).
 
 This software uses the Natural Language Processing (NLP) library `spaCy`.
 spaCy is distributed under the MIT License (https://opensource.org/licenses/MIT),
+and its NLP pre-trained models are licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported (CC BY-SA 3.0) [https://creativecommons.org/licenses/by-sa/3.0/]
 Copyright (C) 2016 ExplosionAI UG (haftungsbeschränkt), 2016 spaCy GmbH, 2015 Matthew Honnibal
 For details see https://spacy.io/ and https://github.com/explosion/spaCy .
 

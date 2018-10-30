@@ -1,4 +1,8 @@
 **/.ipynb_checkpoints
 **/.idea
 **/.DS_Store
-data/*.warc.gz
+*.warc.gz
+*.pyc
+*.pyo
+__pycache__/
+env/

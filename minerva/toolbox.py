@@ -49,7 +49,7 @@ def softmax(x, temperature=1.0):
     return e_x / e_x.sum()
 
 
-def load_wef_ground_truth(fname):
+def load_wef_ground_truth(fname, topn=15):
     links = defaultdict(Counter)
     is_header = True
     with open(fname, "r") as fin:
@@ -64,6 +64,9 @@ def load_wef_ground_truth(fname):
             target = target.replace("R_", "")
             links[source][target] += int(strength)
             links[target][source] += int(strength)
+    # keep the topn
+    for risk in links.keys():
+        links[risk] = links[risk].most_common(topn)
     return links
 
 
@@ -84,7 +87,7 @@ def compute_prec_rec_f1_jac_metrics(gt_links, topn_links, topn=1):
     rec = []
     jac = []
     for r in topn_links.keys():
-        risks_true = set([x for x in gt_links[r].keys()])
+        risks_true = set([x[0] for x in gt_links[r]])
         risks_pred = set([x[0] for x in topn_links[r]][:topn])
         prec.append(precision(risks_true, risks_pred))
         rec.append(recall(risks_true, risks_pred))

@@ -46,7 +46,7 @@ class CommonCrawlExtractor:
     # continue after error
     __continue_after_error = False
     # log level
-    __log_level = logging.INFO
+    __log_level = logging.CRITICAL
     # whether to delete file or not after extraction
     __delete_warc_after_extraction = True
     # event handler called when an article was extracted successfully and passed all filter criteria
@@ -279,7 +279,7 @@ class CommonCrawlExtractor:
 
     def extract_from_commoncrawl_gzip_local(self, cc_gzip_file, valid_hosts=None,
                                           start_date=None, end_date=None, strict_date=True, continue_after_error=True,
-                                          log_level=logging.INFO, delete_warc_after_extraction=False):
+                                          log_level=logging.CRITICAL, delete_warc_after_extraction=False):
         """
         Crawl and extract articles form the news crawl provided by commoncrawl.org. For each article that was extracted
         successfully the callback function callback_on_article_extracted is invoked where the first parameter is the

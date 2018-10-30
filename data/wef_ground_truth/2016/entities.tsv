@@ -1,0 +1,43 @@
+id	label	type	category	description
+R_ASSET	Asset bubble	Risk	Economic	Unsustainably overpriced assets such as commodities, housing, shares, etc. in a major economy or region.
+R_DEFLATION	Deflation	Risk	Economic	Prolonged ultra-low inflation or deflation in a major economy or region.
+R_FINANCIALMECH	Failure of financial mechanism or institution	Risk	Economic	Collapse of a financial institution and/or malfunctioning of a financial system impacts the global economy.
+R_CRITICALINFRA	Failure of critical infrastructure	Risk	Economic	Failure to adequately invest in, upgrade and secure infrastructure networks (e.g. energy, transportation and communications) leads to pressure or a breakdown with system-wide implications.
+R_FISCALCRISES	Fiscal crises	Risk	Economic	Excessive debt burdens generate sovereign debt crises and/or liquidity crises.
+R_UNEMPLOYMENT	Unemployment or underemployment	Risk	Economic	A sustained high level of unemployment or underutilization of the productive capacity of the employed population prevents the economy from attaining high levels of employment.
+R_ILLICITTRADE	Illicit trade	Risk	Economic	Large-scale activities outside the legal framework such as illicit financial flow, tax evasion, human trafficking, counterfeiting and organized crime undermine social interactions, regional or international collaboration and global growth.
+R_ENERGY	Energy price shock	Risk	Economic	Energy price increases or decreases significantly and places further economic pressures on highly energy-dependent industries and consumers.
+R_INFLATION	Unmanageable inflation	Risk	Economic	Unmanageable increase in the general price level of goods and services in key economies.
+R_WEATHEREVENTS	Extreme weather events	Risk	Environmental	Major property, infrastructure and environmental damage as well as human loss caused by extreme weather events.
+R_FAILURECLIMATE	Failure of climate-change mitigation and adaptation	Risk	Environmental	Governments and businesses fail to enforce or enact effective measures to mitigate climate change, protect populations and help businesses impacted by climate change to adapt.
+R_BIODIVERSITY	Biodiversity loss and ecosystem collapse	Risk	Environmental	Irreversible consequences for the environment, resulting in severely depleted resources for humankind as well as industries.
+R_NATURALCATA	Natural catastrophes	Risk	Environmental	Major property, infrastructure and environmental damage as well as human loss caused by geophysical disasters such as earthquakes, volcanic activity, landslides, tsunamis or geomagnetic storms.
+R_MANMADECATA	Man-made environmental catastrophes	Risk	Environmental	Failure to prevent major man-made catastrophes, causing harm to lives, human health, infrastructure, property, economic activity and the environment.
+R_NATIONALGOV	Failure of national governance	Risk	Geopolitical	Inability to govern a nation of geopolitical importance due to weak rule of law, corruption or political deadlock.
+R_INTERSTATE	Interstate conflict	Risk	Geopolitical	A bilateral or multilateral dispute between states escalates into economic (e.g. trade/currency wars, resource nationalization), military, cyber, societal or other conflict.
+R_TERRORIST	Terrorist attacks	Risk	Geopolitical	Individuals or non-state groups with political or religious goals successfully inflict large-scale human or material damage.
+R_STATECOLLAPSE	State collapse or crisis 	Risk	Geopolitical	State collapse of geopolitical importance due to internal violence, regional or global instability, military coup, civil conflict, failed states, etc.
+R_WMD	Weapons of mass destruction	Risk	Geopolitical	Nuclear, chemical, biological and radiological technologies and materials are deployed creating international crises and potential for significant destruction.
+R_FAILUREURBAN	Failure of urban planning	Risk	Societal	Poorly planned cities, urban sprawl and associated infrastructure create social, environmental and health challenges.
+R_FOOD	Food crises	Risk	Societal	Access to appropriate quantities and quality of food and nutrition becomes inadequate, unaffordable or unreliable on a major scale.
+R_MIGRATION	Large-scale involuntary migration	Risk	Societal	Large-scale involuntary migration induced by conflict, disasters, environmental or economic reasons.
+R_SOCIALINSTABILITY	Profound social instability	Risk	Societal	Major social movements or protests (e.g. street riots, social unrest, etc.) disrupt political or social stability, negatively impacting populations and economic activity.
+R_INFECTIOUSDISEASES	Spread of infectious diseases	Risk	Societal	Bacteria, viruses, parasites or fungi cause uncontrolled spread of infectious diseases (for instance due to resistance to antibiotics, antivirals and other treatments) leading to widespread fatalities and economic disruption.
+R_WATER	Water crises	Risk	Societal	A significant decline in the available quality and quantity of fresh water resulting in harmful effects on human health and/or economic activity.
+R_TECHADV	Adverse consequences of technological advances	Risk	Technological	Intended or unintended adverse consequences of technological advances such as artificial intelligence, geo-engineering and synthetic biology causing human, environmental and economic damage.
+R_CRITICALINFO	Critical information infrastructure breakdown	Risk	Technological	Cyber dependency increases vulnerability to outage of critical information infrastructure (e.g. internet, satellites, etc.) and networks causing widespread disruption.
+R_CYBERATTACKS	Cyberattacks	Risk	Technological	Large-scale cyberattacks or malware causing large economic damages, geopolitical tensions or widespread loss of trust in the Internet.
+R_DATAFRAUD	Data fraud or theft	Risk	Technological	Wrongful exploitation of private or official data that takes place on an unprecedented scale.
+T_AGEING	Ageing population	Trend	Trend	Ageing populations in developed and developing countries driven by declining fertility and decrease of middle and old age mortality.
+T_INTERGOVERNANCE	Changing landscape of international governance	Trend	Trend	Changing landscape of global or regional institutions (e.g.  UN, IMF, NATO, etc.), agreements or networks.
+T_CLIMATECHANGE	Climate change	Trend	Trend	Change of climate which is attributed directly or indirectly to human activity that alters the composition of the global atmosphere, in addition to natural climate variability.
+T_ENVIRONMENTALDEG	Environmental degradation	Trend	Trend	Deterioration in the quality of air, soil and water from ambient concentrations of pollutants and other activities and processes.
+T_MIDDLECLASS	Growing middle class in emerging economies	Trend	Trend	Growing share of population reaching middle-class income levels in emerging economies.
+T_NATIONALSENTIMENT	Increasing national sentiment	Trend	Trend	Increasing national sentiment among populations and political leaders affecting countries’ national and international political positions.
+T_POLARIZATION	Increasing polarization of societies	Trend	Trend	Inability to reach agreement on key issues within countries because of diverging or extreme values, political or religious views.
+T_CHRONICDISEASES	Rise of chronic diseases	Trend	Trend	Increasing rates of non-communicable diseases, also known as chronic diseases, leading to long-term costs of treatment and threatening recent societal gains in life expectancy and quality.
+T_CYBERDEPENDENCY	Rise of cyber dependency	Trend	Trend	Rise of cyber dependency due to increasing digital interconnection of people, things and organizations.
+T_MOBILITY	Rising geographic mobility	Trend	Trend	Increasing mobility of people and things due to quicker and better-performing means of transport and lowered regulatory barriers.
+T_INCOMEDISP	Rising income and wealth disparity	Trend	Trend	Increasing socioeconomic gap between rich and poor in major countries or regions.
+T_SHIFTPOWER	Shifts in power	Trend	Trend	Shifting power from state to non-state actors and individuals, from global to regional levels, and from developed to emerging market and developing economies.
+T_URBANIZATION	Urbanization	Trend	Trend	Rising number of people living in urban areas resulting in physical growth of cities. 

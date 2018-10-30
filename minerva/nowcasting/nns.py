@@ -1,12 +1,28 @@
 """
-Using Keras to implement a Simple Nowcast Network (NNS) for timeseries prediction.
-NNS is based on Convolutional Neural Networks following a simplified WaveNet architecture.
+Copyright 2017 Libre AI
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 """
 from __future__ import print_function, division
 
 import numpy as np
 from keras.layers import Input, Convolution1D, Dense, Flatten
 from keras.models import Model
+
+"""
+Using Keras to implement a Simple Nowcast Network (NNS) for timeseries prediction.
+NNS is based on Convolutional Neural Networks following a simplified WaveNet architecture.
+"""
 
 
 class NNS:
@@ -80,7 +96,6 @@ class NNS:
 
         q = np.atleast_3d([timeseries[-window_size:]])
         return X, y, q
-
 
     def nowcast(self, timeseries, window_size):
         """Create a 1D CNN regressor to predict the next value in a `timeseries` using the preceding `window_size` elements

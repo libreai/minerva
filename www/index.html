@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<script>
+/***
+Copyright 2017 Libre AI
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+***/
+</script>
+
+<style>
+
+.node {
+  font: 300 12px "Roboto", sans-serif;
+  font-weight: 250;
+  fill: #eee;
+}
+
+.link {
+  stroke-opacity: 0.2;
+  fill: none;
+  pointer-events: none;
+}
+
+.node:hover,
+.node--source,
+.node--target {
+  font-weight: 500;
+  fill: #fff;
+}
+
+.node--source {
+
+}
+
+.node--target {
+
+}
+
+.link--source,
+.link--target {
+  stroke-opacity: 1;
+}
+
+/* --- */
+
+.sidenav {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+#text {
+  margin: 0 auto;
+  padding: 20px;
+  font: 300 12px "Roboto", sans-serif;
+}
+
+#slider_value {
+  margin: 0 auto;
+  padding: 20px;
+  font: 300 14px "Roboto", sans-serif;
+  color: skyblue;
+  font-weight: bold;
+}
+
+.legend {
+  margin: 0 auto;
+  padding: 20px;
+  font: 300 10px "Roboto", sans-serif;
+  text-transform: capitalize;
+  color: #fff;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: inline-block;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+
+/**** Custom styles for noUiSlider ****/
+
+.noUi-horizontal {
+    height: 10px !important;
+}
+
+.noUi-connect {
+	background: skyblue !important;
+}
+
+.noUi-tooltip {
+    display: none !important;
+}
+.noUi-active .noUi-tooltip {
+    display: block !important;
+}
+
+.noUi-handle {
+  height: 20px !important;
+  width: 20px !important;
+}
+
+
+</style>
+
+<script>
+//controlling the data to load:
+var url_string = window.location.href;
+var url = new URL(url_string);
+var year = url.searchParams.get("year");
+var week = url.searchParams.get("week");
+
+</script>
+
+<script>
+  var color = [ "#0cc3ff", "#00bf8f", "#ffc20c", "#ff3366", "#8f00bf"];
+  var category2color = {economic: "#0cc3ff", environmental: "#00bf8f", geopolitical: "#ffc20c", societal: "#ff3366", technological: "#8f00bf"};
+</script>
+
+<script>
+// spinner loader options
+  var opts = {
+    lines: 13, // The number of lines to draw
+    length: 20, // The length of each line
+    width: 9, // The line thickness
+    radius: 25, // The radius of the inner circle
+    scale: 1, // Scales overall size of the spinner
+    corners: 1, // Corner roundness (0..1)
+    color:  "#0cc3ff", //color, // CSS color or array of colors
+    fadeColor: 'transparent', // CSS color or array of colors
+    speed: 1, // Rounds per second
+    rotate: 0, // The rotation offset
+    animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+    direction: 1, // 1: clockwise, -1: counterclockwise
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    className: 'spinner', // The CSS class to assign to the spinner
+    top: '250px', // Top position relative to parent
+    left: '250px', // Left position relative to parent
+    shadow: '0 0 1px transparent', // Box-shadow for the lines
+    position: 'absolute' // Element positioning
+  };
+
+</script>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Minerva</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+
+    <!-- Font Awesome JS -->
+    <script defer src="js/fontawesome.com/releases/v5.0.13/js/solid.js" crossorigin="anonymous"></script>
+    <script defer src="js/fontawesome.com/releases/v5.0.13/js/fontawesome.js" crossorigin="anonymous"></script>
+    <!-- d3.js -->
+    <script src="js/d3js.org/d3.v5.min.js" crossorigin="anonymous"></script>
+    <!-- spin.js -->
+    <script src="js/spin.js/2.0.1/spin.min.js" crossorigin="anonymous"></script>
+    <!-- jquery.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Time Slider -->
+    <script src="js/nouislider/nouislider.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="js/nouislider/nouislider.min.css"  crossorigin="anonymous"></script>
+    <script src="js/nouislider/wNumb.js" crossorigin="anonymous"></script>
+    <!-- moment.js -->
+    <script src="js/moment/moment.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="favicon.ico">
+
+    <!-- get the required files from 3rd party sources -->
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:400,300,700,500,100' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body style="background: #152f40;">
+    <div class="container">
+      <!-- Page Content  -->
+            <div class="row">
+              <div class="col-sm-8 col-md-8 col-lg-8" >
+                <img src="img/logo-white.png" alt="Libre AI" width="150px"
+                style="display: inline; vertical-align: center; float: none; padding: 20px;">
+                  <div id="graph_head" class="legend">
+                    <span style="color: white; font-size: 14pt; font-weight: bold;">[ Minerva ]</span>
+                    <p/><p/>
+                    <span style="font-weight: bold;">Time Control:</span>
+                    <div  id="slider"></div>
+                    <p/><p/>
+                    <span id="graph_date" style="font-weight: bold;">Predicted Graph</span>
+                    <p/><p/>
+                    <b>Risk categories: </b>
+                    <p/>
+                    <div id="legend"></div>
+                  </div>
+                  <div id="body_d3" class="body_d3"></div>
+              </div>
+              <div class="col-sm-4 col-md-4 col-lg-4" style="background: #152f40; color: #fff">
+                  <div id="text"></div>
+              </div>
+            </div>
+    </div>
+</body>
+
+<script>
+// The slider:
+// Create a new date from a string, return as a timestamp.
+
+// Date.prototype.getWeek = function() {
+//     var onejan = new Date(this.getFullYear(),0,1);
+//     var millisecsInDay = 86400000;
+//     var week = Math.ceil((((this - onejan) / millisecsInDay) + onejan.getDay() + 1) / 7);
+//     return (week <= 52)? week : 52;
+// };
+
+function timestamp(str) {
+    return new Date(str).getTime();
+}
+
+function getSelectedDate(d) {
+  var selectedDate = new Date(+d);
+  return moment(selectedDate);
+}
+
+var slider = document.getElementById('slider');
+var min_val = timestamp('2018-01-01');
+var max_val = timestamp('2018-08-31');
+
+noUiSlider.create(slider, {
+  range: {
+      min: min_val,
+      max: max_val
+  },
+
+  connect: 'lower',
+
+  step: 1,
+// Steps of one week
+  step: 7 * 24 * 60 * 60 * 1000,
+
+// Two more timestamps indicate the handle starting positions.
+  start: [max_val],
+
+// No decimals
+  format: {
+    to: function(d) {
+      var to_val = '';
+      if (d === max_val) {
+        to_val = 'Predicted Graph';
+      } else {
+        var the_date = getSelectedDate(d);
+        var year = the_date.format('YYYY');
+        var week = the_date.format('WW');
+        to_val = year + 'W' + week;
+      }
+      return to_val;
+    },
+    from: Number },
+
+  tooltips: true
+});
+
+</script>
+
+<script>
+// The risk ids to map to a color
+// [{u'id': u'0', u'name': u'Economic Risks'},
+//  {u'id': u'1', u'name': u'Environmental Risks'},
+//  {u'id': u'2', u'name': u'Geopolitical Risks'},
+//  {u'id': u'3', u'name': u'Societal Risks'},
+//  {u'id': u'4', u'name': u'Technological Risks'}]
+
+var diameter = 800;
+var radius = diameter / 2;
+var innerRadius = radius / 2;
+
+var edge_weight = d3.scaleLinear()
+                    .domain([0, 1])
+                    .range([1, 25]);
+
+var cluster = d3.cluster()
+                .size([360, innerRadius]);
+
+var line = d3.radialLine()
+             .curve(d3.curveBundle.beta(0.85))
+             .radius(function(d) { return d.y; })
+             .angle(function(d) { return d.x / 180 * Math.PI; });
+
+var line_extern = d3.radialLine()
+                    .curve(d3.curveBundle.beta(0.2))
+                    .radius(function(d) {
+                      var b = d._y ? d._y : d.y;
+                      return d._y ? d._y : d.y;
+                    })
+                    .angle(function(d) {
+                      var b = d._x ? d._x : d.x;
+                      return b / 180 * Math.PI
+                    });
+
+var svg = d3.select("#body_d3")
+            .append("svg")
+            .attr("preserveAspectRatio", "xMinYMin meet")
+            .attr("viewBox", "0 0 " + diameter + " " + diameter)
+            // .attr("width",  diameter)
+            // .attr("height", diameter)
+            // .attr("style", "margin: auto;display: block; padding: 0px;")
+            .append("g")
+            .attr("transform", "translate(" + radius + ","
+                                            + radius * 1.1
+                                      + ")"
+                  )
+            .classed("svg-content", true);
+
+// clear a graph
+function clear_graph() {
+  svg.selectAll("*").remove();
+  $("#text").html('');
+}
+// callback function wrapped for loader in 'init' function
+function play(year, week) {
+    clear_graph();
+    var data_file = (year && week && parseInt(week) >= 1 && parseInt(week) <= 52)? (year + "W" + week.padStart(2, '0') + "_graph_data.json") : "graph_data.json";
+    // trigger loader
+    var target = document.getElementById('body_d3');
+    var spinner = new Spinner(opts).spin(target);
+
+    // slow the json load intentionally, so we can see it every load
+    setTimeout(function() {
+
+        // load json data and trigger callback
+        d3.json("data/" + data_file).then(function(data) {
+            // stop spin.js loader
+            spinner.stop();
+
+            // the graph
+            graph(data);
+            // legend
+            add_risk_category_labels();
+
+        }).catch(function(err){
+            spinner.stop();
+            console.log('Error:' + err);
+            if (err.message === '404 File not found') {
+              alert('Could not find the data for the date specified :/ \nI will try to load the latest graph, I hope this is OK :)');
+            } else {
+              alert('There was an error :/ \nI will try to load the latest graph, I hope this is OK :)')
+            }
+            console.log(url.origin + url.pathname);
+            window.location.href = url.origin;
+          });
+    }, 100);
+  }
+
+// start the graph
+play(year, week);
+
+var children = {};
+var entities = {};
+var weights = {};
+
+function graph(data){
+        var root = extractHierarchy(data);
+
+        cluster(root);
+
+        var node = svg.append("g")
+                      .selectAll(".node")
+                      .data(root.leaves())
+                      .enter();
+
+        var links_info = extractLinks(root.leaves(), data.links);
+
+        var links = links_info.links;
+        weights = links_info.weights;
+        children = links_info.children;
+        entities = links_info.entities;
+
+        var link = svg.append("g")
+                      .selectAll(".link")
+                      .data(links)
+                      .enter();
+
+         link
+            .append("path")
+            .each(function(d) {d.source = d[0], d.target = d[d.length - 1];})
+            .style("stroke", "silver")
+            .attr("stroke-width", function(d) {
+              return 5;
+            })
+            .transition()
+            .duration(1000)
+            .attr("class", "link")
+            .style("stroke", function(d) {
+              return category2color[d.target.data.category.toLowerCase()];
+            })
+            .attr("stroke-width", function(d) {
+              return edge_weight(weights[d.source.data.id + '_' + d.target.data.id]);
+              //return 1;
+            })
+            .attr("d", function(d) {
+              // for nodes in the same risk category, we draw the line outside the circle
+              try{
+                if (d.source.data.parent.key === d.target.data.parent.key) {
+                    var source_x = d.source.x;
+                    var target_x = d.target.x;
+
+                    var source_y = d.source.y;
+                    var target_y = d.target.y;
+
+                    //TODO: check alternative to avoid dependance on node index.
+                    var e = d[1];
+
+                    var delta_x = source_x > target_x ? source_x - target_x : target_x - source_x;
+                    var shift_x = target_x > source_x ? source_x + delta_x / 2 : target_x + delta_x / 2;
+                    var dx = shift_x > e.x ? shift_x - e.x : null;
+
+                    var delta_y = source_y > target_y ? source_y - target_y : target_y - source_y;
+                    var shift_y = target_y > source_y ? source_y + delta_y / 2 : target_y + delta_y / 2;
+                    var dy = shift_y > e.y ? shift_y - e.y : null;
+                    var is_bigger_than_innerRadius = e.y > innerRadius ? -1 : 1;
+
+                    e._x = e.x + dx;
+                    e._y = e.y + dy * is_bigger_than_innerRadius * 2.5;
+
+                    return line_extern(d);
+                  }
+                  else {
+                    return line(d);
+                  }
+                } catch(err) {
+                  console.log(err);
+                }
+            });
+
+           node.append("path")
+               .attr("transform", function(d) { return "rotate(" + (d.x - 90) + "), translate(" + (d.y + 8) + ",0)"; })
+               .style("stroke", function(d) {return category2color[d.data.category.toLowerCase()]})
+               .style("stroke-width", "5")
+               .style("stroke-opacity", "0.4")
+               .style("fill", function(d) {return category2color[d.data.category.toLowerCase()]})
+               //.style("opacity", "0.85")
+               //add the cirles:
+               .attr("d", d3.symbol()
+                  .type(d3.symbolCircle)
+                  //.size(function(d) {return Math.min(Math.exp(d.data.links.length), 500); } )
+                  .size(function(d) {return Math.min(Math.exp(children[d.data.id].size), 250); } )
+                  //.size(function(d) {return 250; } )
+                )
+                .on("click", mouseovered)
+                .on("mouseover", mouseovered)
+                // .on("mouseout", mouseouted);
+                .on("dblclick", mouseouted)
+
+            node.append("text")
+                       .attr("class", "node")
+                       .attr("dx", function(d) { return d.x < 180 ? "1.5em" : "-1.5em"; })
+                       .attr("dy", "0.31em")
+                       .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ") translate(" + (d.y + 8) + ",0)" + (d.x < 180 ? "" : "rotate(180)"); })
+                       .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+                       .html(function(d) { return d.data.key; })
+                       .on("click", mouseovered)
+                       //.on("mouseover", mouseovered)
+                       .on("dblclick", mouseouted);
+      }
+
+function mouseovered(d) {
+  var link = svg.selectAll(".link");
+  var node = svg.selectAll(".node");
+
+  node.each(function(n) { n.target = n.source = false; });
+
+  link
+      .classed("link--target", function(l) { if (l.target === d) return l.source.source = true; })
+      .classed("link--source", function(l) { if (l.source === d) return l.target.target = true; })
+      .filter(function(l) {return l.target === d || l.source === d; })
+      .style("stroke", "silver")
+      .transition()
+      .duration(1000)
+      .style("stroke", function (l) {
+        return category2color[l.target.data.category.toLowerCase()];
+      });
+
+  node
+      .classed("node--target", function(n) { return n.target; })
+      .style("fill", function (n) {
+        if (n === d) return category2color[n.data.category.toLowerCase()];
+      })
+      .style("font-weight", function (n) {
+        if (n === d) return "500";
+      });
+
+    var linked_with = "";
+    var my_children = children[d.data.id];
+    my_children.forEach(function(child) {
+      // add the target link and process risk category
+      var risk_name = child.data.label;
+      var risk_category = child.data.category;
+      var link_entities = child.data.entities;
+
+      var composed_id = d.data.id + '_' + child.data.id;
+
+      var locations =  ('GPE' in entities[composed_id])? entities[composed_id]['GPE'] : [];
+      var persons =  ('PERSON' in entities[composed_id])? entities[composed_id]['PERSON'] : [];
+      var organizations = ('ORG' in entities[composed_id])? entities[composed_id]['ORG'] : [];
+
+      linked_with += ('<button type="button" class="btn btn-outline-light btn-sm" '
+                    + 'data-toggle="collapse" '
+                    + 'data-target="#' + composed_id + '">'
+                    + '<span style="color: '
+                    + category2color[risk_category.toLowerCase()]
+                    + '">'
+                    + risk_name
+                    + '</span>'
+                    //+ ' (' + (weights[composed_id] * 100).toFixed(2) + '%)'
+                    + '</button>'
+                    + '<br/>'
+                  );
+
+        linked_with += '<div class="collapse" id="' + composed_id + '">';
+
+        linked_with += '<br/>';
+
+        if (locations.length > 0) {
+          linked_with += '<h6>Locations</h6>';
+          linked_with += '<ul>';
+          var i;
+          for (i = 0; i < locations.length; i++) {
+            linked_with += ('<li><a href="'
+            + encodeURI("https://www.google.com/maps/search/" + locations[i]) + '" '
+            +'style="color: #ffffff;"  target="_blank">'
+            + locations[i]
+            + '</a></li>');
+          }
+          linked_with += '</ul>';
+        }
+
+        if (persons.length > 0) {
+          linked_with += '<h6>Persons</h6>';
+          linked_with += '<ul>';
+          var i;
+          for (i = 0; i < persons.length; i++) {
+            linked_with += ('<li><a href="'
+            + encodeURI("https://news.google.com/search?q=" + persons[i]) + '" '
+            +'style="color: #ffffff;" target="_blank">'
+            + persons[i]
+            + '</a></li>');
+          }
+          linked_with += '</ul>';
+        }
+
+        if (organizations.length > 0) {
+          linked_with += '<h6>Organizations and others</h6>';
+          linked_with += '<ul>';
+          var i;
+          for (i = 0; i < organizations.length; i++) {
+            linked_with += ('<li><a href="'
+            + encodeURI("https://news.google.com/search?q=" + organizations[i]) + '" '
+            +'style="color: #ffffff;" target="_blank">'
+            + organizations[i]
+            + '</a></li>');
+          }
+          linked_with += '</ul>';
+        }
+
+        linked_with += '</div>';
+
+    });
+
+      // The text in sidebar:
+      // The Text:
+      var risk_name = d.data.long_label;
+      var risk_category = d.data.category;
+
+      var txt = '<h4>'
+            + '<span style="color: '+ category2color[d.data.category.toLowerCase()] +'">' + risk_name + '</span>'
+            + '</h4>'
+            + d.data.description + '.'
+            + '<br/>'
+            + '<br/> <b>Most connected global risks:</b>'
+            + '<p/>'
+            + linked_with
+            ;
+
+    $("#text").html(txt);
+}
+
+function mouseouted(d) {
+
+  var link = svg.selectAll(".link");
+  var node = svg.selectAll(".node");
+
+  link
+      .classed("link--target", false)
+      .classed("link--source", false);
+
+  node
+      .classed("node--target", false)
+      .classed("node--source", false)
+      .style("fill", "#bbb");
+}
+
+function mouseclicked(d) {
+  mouseovered(d);
+}
+
+function add_risk_category_labels(){
+  var legend = '';
+  var categories = [];
+  Object.keys(category2color).forEach(function(category){
+    categories.push(category);
+  });
+  categories.sort().forEach(function(category){
+    legend += '&nbsp;&nbsp;&nbsp;&nbsp; <span class="dot" style="background-color: '+ category2color[category]
+    +';"></span> &nbsp;' + category + " Risks <br/>";
+  });
+
+  $("#legend").html(legend);
+
+}
+
+// Lazily construct the hierarchy from names.
+function extractHierarchy(data) {
+  var map = {};
+
+  function find(name, data) {
+    var node = map[name];
+    var i = 0;
+    if (!node) {
+      node = map[name] = data || {name: name, children: []};
+      if (name.length) {
+        // the parent name, e.g., risk group
+        node.parent = find(name.substring(0, i = name.lastIndexOf(".")));
+        // the children nodes for the group, e.g., individual risks
+        node.parent.children.push(node);
+        // the specific risk (i.e., the substring after the '.')
+        node.key = name.substring(i + 1);
+      }
+    }
+    return node;
+  };
+
+  var nodes = [];
+  for (key in data.nodes){
+    nodes.push(data.nodes[key]);
+  }
+
+  nodes.forEach(function(d) {
+    find(d.category + '.' + d.label, d);
+  });
+
+  return d3.hierarchy(map[""]);
+}
+
+// Return a list of links for the given array of nodes.
+function extractLinks(nodes, links) {
+  var edges = [];
+  var map = {};
+  var children = {};
+  var link2weight = {};
+  var link2entities = {};
+
+  // Compute a map from name to node.
+  nodes.forEach(function(d) {
+    map[d.data.id] = d;
+  });
+
+  // Construct a link from the source to target node.
+  Object.keys(links).forEach(function(key) {
+    var link = links[key];
+    edges.push(map[link.source].path(map[link.target]));
+
+    if (! (link.source in children)){
+      children[link.source] = new Set();
+    }
+    children[link.source].add(map[link.target]);
+
+    var composed_id = link.source + '_' + link.target;
+    link2weight[composed_id] = Math.abs(link.weight);
+    link2entities[composed_id] = link.entities;
+
+  });
+
+  return {links: edges, weights: link2weight, children: children, entities: link2entities};
+}
+
+</script>
+
+<script>
+slider.noUiSlider.on('set', function (values, handle) {
+  var selected_value = values[handle];
+  var year = undefined;
+  var week = undefined;
+  var graph_date = '';
+  if (selected_value.includes('W')) {
+    var tokens = selected_value.split('W');
+    year = tokens[0];
+    week = tokens[1];
+    var momentDate = moment(year + '-' + week, 'YYYY-WW');
+    var month = momentDate.format('MMMM');
+    graph_date += 'Graph for Time: '
+                 + '<br/>year = ' + year
+                 + '<br/>month = ' + month
+                 + '<br/>week of year = ' + week;
+  } else {
+    graph_date += '<h7>' + selected_value + '</h7>';
+  }
+  clear_graph();
+  play(year, week);
+  // date
+  $("#graph_date").html(graph_date);
+});
+</script>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-122843448-1', 'auto');
+
+	ga('send', 'pageview');
+}
+</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+</html>

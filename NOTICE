@@ -1,0 +1,33 @@
+Libre AI Minerva
+Copyright 2017 Libre AI
+
+This product includes software developed at Libre AI (https://www.libreai.com/).
+
+This software uses the Natural Language Processing (NLP) library `spaCy`.
+spaCy is distributed under the MIT License (https://opensource.org/licenses/MIT),
+and its NLP pre-trained models are licensed under the Creative Commons Attribution-ShareAlike 3.0
+Unported (CC BY-SA 3.0) [https://creativecommons.org/licenses/by-sa/3.0/]
+Copyright (C) 2016 ExplosionAI UG (haftungsbeschränkt), 2016 spaCy GmbH, 2015 Matthew Honnibal
+For details see https://spacy.io/ and https://github.com/explosion/spaCy .
+
+This software contains code derived from `news-please`, which is available under the Apache License, Version 2.0
+(http://www.apache.org/licenses/LICENSE-2.0), Copyright (c) 2017 Felix Hamborg.
+For details see https://github.com/fhamborg/news-please .
+
+This software contains code derived from `keras-tcn`, which is licensed under the MIT License
+(https://opensource.org/licenses/MIT), Copyright (c) 2018 Philippe Rémy.
+For details see https://github.com/philipperemy/keras-tcn .
+
+For language identification, this software uses a pre-trained `fastText` model distributed under the
+Creative Commons Attribution-Share-Alike License 3.0. [https://creativecommons.org/licenses/by-sa/3.0/]
+For details see:
+https://fasttext.cc/docs/en/language-identification.html
+[1] A. Joulin, E. Grave, P. Bojanowski, T. Mikolov, Bag of Tricks for Efficient Text Classification
+[2] A. Joulin, E. Grave, P. Bojanowski, M. Douze, H. Jégou, T. Mikolov,
+FastText.zip: Compressing text classification models
+
+
+
+
+
+

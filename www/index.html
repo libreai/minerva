@@ -22,7 +22,7 @@ limitations under the License.
 <style>
 
 .node {
-  font: 300 12px "Roboto", sans-serif;
+  font: 300 12px "Roboto";
   font-weight: 250;
   fill: #eee;
 }
@@ -66,13 +66,13 @@ limitations under the License.
 #text {
   margin: 0 auto;
   padding: 20px;
-  font: 300 12px "Roboto", sans-serif;
+  font: 300 12px "Roboto";
 }
 
 #slider_value {
   margin: 0 auto;
   padding: 20px;
-  font: 300 14px "Roboto", sans-serif;
+  font: 300 14px "Roboto";
   color: skyblue;
   font-weight: bold;
 }
@@ -80,12 +80,9 @@ limitations under the License.
 .legend {
   margin: 0 auto;
   padding: 20px;
-  font: 300 10px "Roboto", sans-serif;
+  font: 300 10px "Roboto";
   text-transform: capitalize;
   color: #fff;
-  display: inline-block;
-  position: absolute;
-  right: 0;
 }
 
 .dot {
@@ -113,13 +110,13 @@ limitations under the License.
 }
 
 /**** Custom styles for noUiSlider ****/
-
+/*
 .noUi-horizontal {
-    height: 10px !important;
-}
+    height: 25px !important;
+} */
 
 .noUi-connect {
-	background: skyblue !important;
+	background: #73C2FB !important;
 }
 
 .noUi-tooltip {
@@ -128,11 +125,11 @@ limitations under the License.
 .noUi-active .noUi-tooltip {
     display: block !important;
 }
-
+/*
 .noUi-handle {
-  height: 20px !important;
-  width: 20px !important;
-}
+  height: 25px !important;
+  width: 25px !important;
+} */
 
 
 </style>
@@ -168,8 +165,8 @@ var week = url.searchParams.get("week");
     direction: 1, // 1: clockwise, -1: counterclockwise
     zIndex: 2e9, // The z-index (defaults to 2000000000)
     className: 'spinner', // The CSS class to assign to the spinner
-    top: '250px', // Top position relative to parent
-    left: '250px', // Left position relative to parent
+    top: '450px', // Top position relative to parent
+    left: '350px', // Left position relative to parent
     shadow: '0 0 1px transparent', // Box-shadow for the lines
     position: 'absolute' // Element positioning
   };
@@ -184,7 +181,7 @@ var week = url.searchParams.get("week");
 
     <title>Minerva</title>
     <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
 
 
 
@@ -201,7 +198,7 @@ var week = url.searchParams.get("week");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CDN -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Time Slider -->
     <script src="js/nouislider/nouislider.min.js" crossorigin="anonymous"></script>
@@ -213,7 +210,7 @@ var week = url.searchParams.get("week");
     <link rel="icon" href="favicon.ico">
 
     <!-- get the required files from 3rd party sources -->
-    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:400,300,700,500,100' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700,500,100' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -224,22 +221,28 @@ var week = url.searchParams.get("week");
               <div class="col-sm-8 col-md-8 col-lg-8" >
                 <img src="img/logo-white.png" alt="Libre AI" width="150px"
                 style="display: inline; vertical-align: center; float: none; padding: 20px;">
-                  <div id="graph_head" class="legend">
-                    <span style="color: white; font-size: 14pt; font-weight: bold;">[ Minerva ]</span>
-                    <p/><p/>
-                    <span style="font-weight: bold;">Time Control:</span>
-                    <div  id="slider"></div>
-                    <p/><p/>
-                    <span id="graph_date" style="font-weight: bold;">Predicted Graph</span>
-                    <p/><p/>
-                    <b>Risk categories: </b>
-                    <p/>
-                    <div id="legend"></div>
-                  </div>
-                  <div id="body_d3" class="body_d3"></div>
+                <h2 style="color: #fff; padding: 10px;">AI+News: Nowcasting the Global Risks Interconnections from the Web</h2>
+                <!-- the graph -->
+                <div id="body_d3" class="body_d3"></div>
+                <!-- . -->
               </div>
               <div class="col-sm-4 col-md-4 col-lg-4" style="background: #152f40; color: #fff">
+                <div id="graph_head" class="legend">
+                  <span style="color: white; font-size: 14pt; font-weight: bold;">[ Minerva ]</span>
+                  <p/><p/>
+                  <span style="font-weight: bold;">Time Control:</span>
+                  <div id="slider"></div>
+                  <p/><p/>
+                  <span id="graph_date" style="font-weight: bold;">Predicted Graph</span>
+                  <p/><p/>
+                  <b>Risk categories: </b>
+                  <p/>
+                  <div id="legend"></div>
                   <div id="text"></div>
+                </div>
+              </div>
+              <div>
+                <p style="color: #eee; font-size: 10pt">Libre AI (c) 2018</p>
               </div>
             </div>
     </div>
@@ -313,7 +316,7 @@ noUiSlider.create(slider, {
 //  {u'id': u'3', u'name': u'Societal Risks'},
 //  {u'id': u'4', u'name': u'Technological Risks'}]
 
-var diameter = 800;
+var diameter = 600;
 var radius = diameter / 2;
 var innerRadius = radius / 2;
 

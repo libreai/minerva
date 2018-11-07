@@ -14,5 +14,7 @@ You can interact with the Global Risks Interconnections Graph at https://libreai
 - The folder `www` corresponds to the user interface of the system and contains the necessary elements and data to display the interactive graph, which uses D3.js as core visualization library
 ---
 _Project Codename: Minerva_
+
 _ID: r3-ywoLejjZpgAv_
+
 _Supported by Google through the DNI Innovation Fund:_ http://www.digitalnewsinitiative.com

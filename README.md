@@ -9,6 +9,7 @@ Minerva leverages news data collections available in the Web and uses Artificial
 You can interact with the Global Risks Interconnections Graph at https://libreai.com/minerva/
 
 ---
+### About this Repo
 - This repository contains the source code for the fundamental components in folder `minerva`
 - A Jupyter Notebook in `notebooks` provides an example of how _Minerva_ works
 - The folder `www` corresponds to the user interface of the system and contains the necessary elements and data to display the interactive graph, which uses D3.js as core visualization library
